@@ -1,0 +1,581 @@
+.navbar {
+    /**/
+}
+
+/* Font family for general text */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #fff; /* Set font color to white */
+    user-select: none;
+}
+
+a {
+    color: #fff;
+}
+
+.bgtext {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.navbar {
+    height: 56px; /* Set to maximum height within the range */
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    background-color: #1f2937; /* Tailwind's bg-gray-800 */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other elements */
+}
+
+.logoheader {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /*box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); /*  for desigin purposes */
+    border-radius: 80%; /* Circular placeholder*/
+    background-image: url(imgs/logobg.jpg);
+}
+
+.logoheader:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8); /* Slightly enhanced glow on hover */
+}
+
+/* Hero section background */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    height: 16rem; /* h-64 equivalent */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('imgs/background.png');
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+    z-index: 1;
+}
+
+.hero-section:hover::before {
+    transform: scale(1.1); /* Zoom effect */
+    opacity: 0.2; /* Darken effect on hover */
+}
+
+.hero-section .bgtext {
+    opacity: 0;
+    color: #fff;
+    font-size: 5rem;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    position: relative;
+    justify-content: center;
+    z-index: 2;
+}
+
+.hero-section:hover .bgtext {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-section .p-8 {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section:hover .p-8{
+    opacity: 1;
+}
+
+/* Neon text glow effect */
+.neon-text {
+    font-family: 'Poppins', sans-serif;
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 10px #00ffff;
+}
+
+/* Navigation and footer links */
+.nav-link {
+    color: #60a5fa; /* Tailwind's blue-400 */
+    transition: color 0.3s;
+}
+.nav-link:hover {
+    color: #2563eb; /* Tailwind's blue-600 */
+}
+
+/* Card style for stats and events */
+.card {
+    background-color: #1f2937; /* Tailwind's bg-gray-800 */
+    padding: 1rem; /* p-4 */
+    border-radius: 0.5rem; /* rounded-lg */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
+}
+
+/* Pure CSS Carousel Styles */
+.carousel-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.6s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.carousel-slide.prev {
+    transform: translateX(-100%);
+}
+
+/* Carousel Controls */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 255, 255, 0.3);
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 1rem 0.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-control:hover {
+    background: rgba(0, 255, 255, 0.6);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #60a5fa;
+    border: 2px solid #60a5fa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator:hover {
+    background-color: #00ffff;
+    border-color: #00ffff;
+    transform: scale(1.2);
+}
+
+.indicator.active {
+    background-color: #00ffff;
+    border-color: #00ffff;
+    transform: scale(5.2);
+}
+
+/* Carousel Event Card with Background Image */
+.carousel-event-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.card-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(1);
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    margin: 1rem;
+    backdrop-filter: blur(5px);
+}
+
+.card-content .card-title {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.card-content .card-text {
+    color: #e5e7eb;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Event image styling */
+.event-image {
+    width: 100%;
+    max-width: 300px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin: 1rem auto;
+    display: block;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+}
+
+/* Animation for carousel items */
+.carousel-slide.active .card {
+    animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .carousel-container {
+        max-width: 100%;
+        margin: 0 1rem;
+    }
+    
+    .carousel-wrapper {
+        height: 250px;
+    }
+    
+    .carousel-control {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .carousel-slide .card {
+        max-width: 100%;
+        margin: 0 1rem;
+    }
+    
+    /* Admin Events Page Responsive */
+    .container {
+        padding: 0 1rem;
+    }
+    
+    /* Header responsive */
+    .flex.justify-between {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .text-3xl {
+        font-size: 1.5rem;
+    }
+    
+    /* Form responsive */
+    .grid.grid-cols-1.md\\:grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .space-y-4 > * + * {
+        margin-top: 1rem;
+    }
+    
+    /* Table responsive */
+    .overflow-x-auto {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .w-full.text-left {
+        min-width: 600px;
+    }
+    
+    .w-full.text-left th,
+    .w-full.text-left td {
+        padding: 0.5rem;
+        font-size: 0.875rem;
+    }
+    
+    /* Table actions responsive */
+    .flex.space-x-2 {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .flex.space-x-2 button {
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 0.75rem;
+    }
+    
+    /* Modal responsive */
+    .max-w-md {
+        max-width: 95%;
+        margin: 1rem;
+    }
+    
+    .bg-gray-800.p-6 {
+        padding: 1rem;
+    }
+    
+    /* Card responsive */
+    .card {
+        padding: 0.75rem;
+    }
+    
+    .card-header {
+        padding: 0.75rem;
+    }
+    
+    .card-body {
+        padding: 0.75rem;
+    }
+    
+    /* Form inputs responsive */
+    input[type="text"],
+    input[type="date"],
+    input[type="file"],
+    select,
+    textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 0.75rem;
+    }
+    
+    /* Button responsive */
+    button[type="submit"] {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+    
+    /* Image display responsive */
+    .w-16.h-16 {
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .w-32.h-32 {
+        width: 6rem;
+        height: 6rem;
+    }
+}
+
+/* Tablet responsive */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 0 2rem;
+    }
+    
+    .grid.grid-cols-1.md\\:grid-cols-2 {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    
+    .w-full.text-left {
+        min-width: 700px;
+    }
+    
+    .max-w-md {
+        max-width: 80%;
+    }
+}
+
+/* Large screen responsive */
+@media (min-width: 1025px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .grid.grid-cols-1.md\\:grid-cols-2 {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.5rem;
+    }
+    
+    .text-3xl {
+        font-size: 1.25rem;
+    }
+    
+    .card {
+        padding: 0.5rem;
+    }
+    
+    .card-header {
+        padding: 0.5rem;
+    }
+    
+    .card-body {
+        padding: 0.5rem;
+    }
+    
+    .w-full.text-left th,
+    .w-full.text-left td {
+        padding: 0.25rem;
+        font-size: 0.75rem;
+    }
+    
+    .w-16.h-16 {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .w-32.h-32 {
+        width: 4rem;
+        height: 4rem;
+    }
+    
+    /* Stack table columns on very small screens */
+    .w-full.text-left {
+        min-width: 400px;
+    }
+    
+    /* Hide less important table columns on mobile */
+    .w-full.text-left th:nth-child(3),
+    .w-full.text-left td:nth-child(3) {
+        display: none;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+    .carousel-wrapper {
+        height: 200px;
+    }
+    
+    .card-content {
+        padding: 1rem;
+    }
+    
+    .card-content .card-title {
+        font-size: 1.25rem;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .event-image {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Print styles */
+@media print {
+    .carousel-control,
+    .carousel-indicators,
+    button,
+    .bg-blue-600,
+    .bg-red-600,
+    .bg-green-600 {
+        display: none !important;
+    }
+    
+    .card {
+        border: 1px solid #000;
+        box-shadow: none;
+    }
+    
+    .text-white {
+        color: #000 !important;
+    }
+    
+    .bg-gray-900 {
+        background: #fff !important;
+    }
+}
