@@ -18,3 +18,7 @@ RUN chown -R www-data:www-data /var/www/html \
 
 # Expose port 80
 EXPOSE 80
+
+RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev \
+    && docker-php-ext-configure gd \
+    && docker-php-ext-install gd
