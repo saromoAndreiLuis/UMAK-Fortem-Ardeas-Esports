@@ -1,9 +1,9 @@
 <?php
 // Database connection configuration
-$host = 'sql12.freesqldatabase.com';
-$dbname = 'sql12787271';
-$username = 'sql12787271';  // Change this to your database username
-$password = '4ra8sBhDyk';      // Change this to your database password
+$host = 'bl4wnoigculroesrpcz8-mysql.services.clever-cloud.com';
+$dbname = 'bl4wnoigculroesrpcz8';
+$username = 'uy4uafqf7abysynw';  // Change this to your database username
+$password = 'OZLrBq8NU4O4tYTMqyQQ';      // Change this to your database password
 
 try {
     // Create PDO connection
