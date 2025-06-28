@@ -1,9 +1,9 @@
 <?php
 // Database connection configuration
-$host = 'sql311.infinityfree.com';
-$dbname = 'if0_39342498_umak_esports';
-$username = 'if0_39342498';  // Change this to your database username
-$password = 'i8QADBUm1osQ8nF';      // Change this to your database password
+$host = 'sql12.freesqldatabase.com';
+$dbname = 'sql12787271';
+$username = 'sql12787271';  // Change this to your database username
+$password = '4ra8sBhDyk';      // Change this to your database password
 
 try {
     // Create PDO connection
