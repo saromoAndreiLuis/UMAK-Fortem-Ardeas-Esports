@@ -1,9 +1,9 @@
 <?php
 // Database connection configuration
-$host = 'localhost';
-$dbname = 'umak_esports';
-$username = 'root';  // Change this to your database username
-$password = '';      // Change this to your database password
+$host = 'sql311.infinityfree.com';
+$dbname = 'if0_39342498_umak_esports';
+$username = 'if0_39342498';  // Change this to your database username
+$password = 'i8QADBUm1osQ8nF';      // Change this to your database password
 
 try {
     // Create PDO connection
