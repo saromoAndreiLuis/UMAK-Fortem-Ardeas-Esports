@@ -56,21 +56,13 @@ ServerSignature Off
     
     # Block access to backup files
     RewriteRule \.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist|old|orig|save|swo|htm|html|json|lock|md|sql|txt|yml|yaml)$ - [F]
-</IfModule>
-
-# Disable PHP execution in uploads directory
-<Directory "uploads">
-    <Files "*.php">
-        Order allow,deny
-        Deny from all
-    </Files>
-</Directory>
-
-# Prevent access to .git directory
-RedirectMatch 404 /\.git
-
-# Block access to sensitive directories
-<DirectoryMatch "^/.*/(\.git|\.svn|\.hg|\.bzr|\.cvs)/">
-    Order allow,deny
-    Deny from all
-</DirectoryMatch> 
+    
+    # Block access to uploads directory PHP files
+    RewriteRule ^uploads/.*\.php$ - [F]
+    
+    # Prevent access to .git directory
+    RewriteRule ^\.git - [F]
+    
+    # Block access to sensitive directories
+    RewriteRule ^.*/(\.git|\.svn|\.hg|\.bzr|\.cvs)/ - [F]
+</IfModule> 
