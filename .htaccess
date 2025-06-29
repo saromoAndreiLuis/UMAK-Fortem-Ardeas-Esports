@@ -1,0 +1,76 @@
+# Security Headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# Prevent access to sensitive files
+<Files "*.sql">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "*.log">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files ".env">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "database_connection*.php">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "ghubdbconn.php">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "functions.php">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Prevent directory listing
+Options -Indexes
+
+# Disable server signature
+ServerSignature Off
+
+# Protect against common attacks
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Block access to hidden files
+    RewriteCond %{SCRIPT_FILENAME} -d [OR]
+    RewriteCond %{SCRIPT_FILENAME} -f
+    RewriteRule "(^\.|/\.)" - [F]
+    
+    # Block access to backup files
+    RewriteRule \.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist|old|orig|save|swo|htm|html|json|lock|md|sql|txt|yml|yaml)$ - [F]
+</IfModule>
+
+# Disable PHP execution in uploads directory
+<Directory "uploads">
+    <Files "*.php">
+        Order allow,deny
+        Deny from all
+    </Files>
+</Directory>
+
+# Prevent access to .git directory
+RedirectMatch 404 /\.git
+
+# Block access to sensitive directories
+<DirectoryMatch "^/.*/(\.git|\.svn|\.hg|\.bzr|\.cvs)/">
+    Order allow,deny
+    Deny from all
+</DirectoryMatch> 

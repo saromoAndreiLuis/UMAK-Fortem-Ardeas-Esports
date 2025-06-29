@@ -344,6 +344,116 @@ a {
     animation: slideInUp 0.6s ease-out;
 }
 
+/*events page*/
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        .event-card {
+            background-color: #243f63;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .event-image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .event-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .event-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .event-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        .event-date {
+            color: #60a5fa;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .event-location {
+            color: #9ca3af;
+            margin-bottom: 1rem;
+        }
+        
+        .event-description {
+            color: #d1d5db;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        
+        .event-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        
+        .status-ongoing {
+            background-color: #059669;
+            color: #fff;
+        }
+        
+        .status-upcoming {
+            background-color: #d97706;
+            color: #fff;
+        }
+        
+        .status-completed {
+            background-color: #6b7280;
+            color: #fff;
+        }
+        
+        .no-events {
+            text-align: center;
+            padding: 3rem;
+            color: #9ca3af;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+        
+        .events-count {
+            text-align: center;
+            color: #60a5fa;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+
+
 @keyframes slideInUp {
     from {
         opacity: 0;
