@@ -1,7 +1,3 @@
-.navbar {
-    /**/
-}
-
 /* Font family for general text */
 body {
     font-family: 'Poppins', sans-serif;
@@ -42,7 +38,6 @@ a {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     /*box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); /*  for desigin purposes */
     border-radius: 80%; /* Circular placeholder*/
-    background-image: url(imgs/logobg.jpg);
 }
 
 .logoheader:hover {
@@ -52,9 +47,16 @@ a {
 
 /* Hero section background */
 .hero-section {
-    position: relative;
+    /*position: relative;
     overflow: hidden;
-    height: 16rem; /* h-64 equivalent */
+    height: 300px; /* h-64 equivalent */
+    /*border-radius: 0.5rem;*/
+    position: relative;
+    max-width: 800px;
+    min-height: 300px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 0.5rem;
 }
 
 .hero-section::before {
@@ -64,6 +66,7 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
+    height: 300px;
     background-image: url('imgs/background.png');
     background-size: cover;
     background-position: center;
@@ -122,7 +125,7 @@ a {
 
 /* Card style for stats and events */
 .card {
-    background-color: #1f2937; /* Tailwind's bg-gray-800 */
+    background-color: #243f63; /* Tailwind's bg-gray-800 */
     padding: 1rem; /* p-4 */
     border-radius: 0.5rem; /* rounded-lg */
     transition: transform 0.3s, box-shadow 0.3s;
@@ -132,10 +135,11 @@ a {
     box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
 }
 
-/* Pure CSS Carousel Styles */
+/* Pure CSS Carousel Styles */                              
 .carousel-container {
     position: relative;
     max-width: 800px;
+    min-height: 300px;
     margin: 0 auto;
     overflow: hidden;
     border-radius: 0.5rem;
@@ -175,15 +179,14 @@ a {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 255, 255, 0.3);
+    background: rgba(253, 253, 253, 0);
     border: none;
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.5rem;  
     padding: 1rem 0.5rem;
     cursor: pointer;
-    border-radius: 50%;
     width: 50px;
-    height: 50px;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -218,9 +221,8 @@ a {
 .indicator {
     width: 12px;
     height: 12px;
-    border-radius: 50%;
-    background-color: #60a5fa;
-    border: 2px solid #60a5fa;
+    background-color: #ffffff;
+    border: 2px solid #c5ddfa;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -243,8 +245,10 @@ a {
     overflow: hidden;
     min-height: 300px;
     display: flex;
-    align-items: center;
+    height: 100%;
+    width: 100%; 
     justify-content: center;
+    align-items: flex-end; /* Align content to the bottom */
 }
 
 .card-background {
@@ -261,17 +265,45 @@ a {
     height: 100%;
     object-fit: cover;
     filter: brightness(1);
+    transition: filter 0.3s ease;
 }
 
 .card-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; /* Add this line to stretch full height */
+    width: 100%;
     padding: 2rem;
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 0.5rem;
-    margin: 1rem;
-    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0); /* transparent */
+    border-radius: 0;
+    z-index: 2; /* Higher than .card-background (z-index: 1) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.card-overlay {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    text-align: center;
+}
+
+.carousel-event-card:hover .card-bg-image {
+    filter: brightness(0.3);
+}
+
+.carousel-event-card:hover .card-content {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-event-card:hover .card-overlay {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .card-content .card-title {
@@ -344,6 +376,24 @@ a {
         margin: 0 1rem;
     }
     
+    /* Side-by-side layout responsive */
+    .flex.flex-col.lg\:flex-row {
+        flex-direction: column;
+    }
+    
+    .lg\:w-1\/2 {
+        width: 100%;
+    }
+    
+    .hero-section {
+        height: 300px;
+        margin-bottom: 2rem;
+    }
+    
+    .hero-section .bgtext {
+        font-size: 3rem;
+    }
+    
     /* Admin Events Page Responsive */
     .container {
         padding: 0 1rem;
@@ -361,7 +411,7 @@ a {
     }
     
     /* Form responsive */
-    .grid.grid-cols-1.md\\:grid-cols-2 {
+    .grid.grid-cols-1.md\:grid-cols-2 {
         grid-template-columns: 1fr;
     }
     
@@ -455,7 +505,7 @@ a {
         padding: 0 2rem;
     }
     
-    .grid.grid-cols-1.md\\:grid-cols-2 {
+    .grid.grid-cols-1.md\:grid-cols-2 {
         grid-template-columns: 1fr 1fr;
         gap: 1rem;
     }
@@ -467,6 +517,23 @@ a {
     .max-w-md {
         max-width: 80%;
     }
+    
+    /* Side-by-side layout for tablets */
+    .flex.flex-col.lg\:flex-row {
+        flex-direction: row;
+    }
+    
+    .lg\:w-1\/2 {
+        width: 50%;
+    }
+    
+    .hero-section {
+        height: 14rem;
+    }
+    
+    .hero-section .bgtext {
+        font-size: 4rem;
+    }
 }
 
 /* Large screen responsive */
@@ -476,9 +543,26 @@ a {
         margin: 0 auto;
     }
     
-    .grid.grid-cols-1.md\\:grid-cols-2 {
+    .grid.grid-cols-1.md\:grid-cols-2 {
         grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
+    }
+    
+    /* Side-by-side layout for large screens */
+    .flex.flex-col.lg\:flex-row {
+        flex-direction: row;
+    }
+    
+    .lg\:w-1\/2 {
+        width: 50%;
+    }
+    
+    .hero-section {
+        height: 16rem;
+    }
+    
+    .hero-section .bgtext {
+        font-size: 5rem;
     }
 }
 

@@ -69,51 +69,58 @@ $show_controls = isset($config['show_controls']) ? $config['show_controls'] : 't
     <header class="navbar justify-center">
         <nav class="flex items-center space-x-8">
             <ul class="flex space-x-4">
-                <li><a href="#" class="nav-link">Home</a></li>
-                <li><a href="#" class="nav-link">About</a></li>
+                <li><a href="index.php" class="nav-link">Home</a></li>
+                <li><a href="aboutpage.php" class="nav-link">About</a></li>
             </ul>
     
-            <a href="#" class="logo-link">
-                <img src="imgs/acadarena-logo.png" alt="Logo" class="logoheader" />
+            <a href="index.php" class="logo-link">
+                <img src="imgs/logoumakesports.png" alt="Logo" class="logoheader" />
             </a>
     
             <ul class="flex space-x-4">
-                <li><a href="#" class="nav-link">Events</a></li>
+                <li><a href="events.php" class="nav-link">Events</a></li>
                 <li><a href="admin_events.php" class="nav-link">Admin</a></li>
             </ul>
         </nav>
     </header>
     <main class="p-8">
-        <section class="hero-section flex items-center justify-center">
-            <h2 class="bgtext">Join the Guild</h2>
-        </section>
-        <section class="mt-8">
-            <h3 class="text-2xl font-bold">Featured Events</h3>
-            <div class="mt-4">
+        <!-- Side-by-side layout: Cover photo on left, Carousel on right -->
+        <div class="flex flex-col lg:flex-row gap-8 items-end">
+            <!-- Left side: Cover photo with hover text -->
+            <div class="lg:w-1/2">
+                <section class="hero-section flex items-center justify-center">
+                    <h2 class="bgtext">Join the Guild</h2>
+                </section>
+            </div>
+            
+            <!-- Right side: Carousel -->
+            <div class="lg:w-1/2">
                 <?php if (!empty($events)): ?>
                 <div class="carousel-container">
                     <div class="carousel-wrapper">
                         <?php foreach ($events as $index => $event): ?>
                         <div class="carousel-slide <?php echo $index === 0 ? 'active' : ''; ?>">
-                            <div class="card mb-4 shadow-sm carousel-event-card">
+                            <div class="card shadow-sm carousel-event-card">
                                 <?php if (!empty($event['image_url'])): ?>
                                     <div class="card-background">
                                         <?php echo displayImage($event['image_url'], htmlspecialchars($event['title']), 'card-bg-image'); ?>
                                     </div>
                                 <?php endif; ?>
                                 <div class="card-content">
-                                    <div class="mb-2">
-                                        <span class="px-2 py-1 rounded text-xs <?php 
-                                            echo $event['status'] === 'ongoing' ? 'bg-green-600' : 
-                                                ($event['status'] === 'upcoming' ? 'bg-yellow-600' : 'bg-gray-600'); 
-                                        ?>">
-                                            <?php echo ucfirst($event['status']); ?>
-                                        </span>
+                                    <div class="card-overlay">
+                                        <div class="mb-2">
+                                            <span class="px-2 py-1 rounded text-xs <?php 
+                                                echo $event['status'] === 'ongoing' ? 'bg-green-600' : 
+                                                    ($event['status'] === 'upcoming' ? 'bg-yellow-600' : 'bg-gray-600'); 
+                                            ?>">
+                                                <?php echo ucfirst($event['status']); ?>
+                                            </span>
+                                        </div>
+                                        <h5 class="card-title"><?php echo htmlspecialchars($event['title']); ?></h5>
+                                        <p class="card-text">Date: <?php echo htmlspecialchars($event['date']); ?></p>
+                                        <p class="card-text">Location: <?php echo htmlspecialchars($event['location']); ?></p>
+                                        <p class="card-text"><?php echo htmlspecialchars($event['description']); ?></p>
                                     </div>
-                                    <h5 class="card-title"><?php echo htmlspecialchars($event['title']); ?></h5>
-                                    <p class="card-text">Date: <?php echo htmlspecialchars($event['date']); ?></p>
-                                    <p class="card-text">Location: <?php echo htmlspecialchars($event['location']); ?></p>
-                                    <p class="card-text"><?php echo htmlspecialchars($event['description']); ?></p>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +152,8 @@ $show_controls = isset($config['show_controls']) ? $config['show_controls'] : 't
                 </div>
                 <?php endif; ?>
             </div>
-        </section>
+        </div>
+        
         <section class="mt-8">
             <h3 class="text-2xl font-bold">Quick Stats</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
@@ -169,7 +177,7 @@ $show_controls = isset($config['show_controls']) ? $config['show_controls'] : 't
             <p>2025 We strive. We fall. We rise.</p>
             <div class="flex space-x-4">
                 <a href="#" class="nav-link">Privacy Policy</a>
-                <a href="#" class="nav-link">Contact</a>
+                <a href="https://www.facebook.com/umakfortem" class="nav-link">Contact</a>
                 <a href="#" class="nav-link">Terms</a>
             </div>
         </div>
